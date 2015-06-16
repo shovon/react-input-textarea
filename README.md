@@ -2,8 +2,6 @@
 
 Have your React input and text area be styled, right down to the placeholder. Have them be styled inlined, without any external CSS.
 
-## Getting Started
-
 ## Usage
 
 Install `react-input-textarea` using npm:
