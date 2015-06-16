@@ -1,6 +1,6 @@
 {
   "name": "react-input-textarea",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Have your React input and text area be styled, right down to the placeholder. Have them be styled inlined, without any external CSS.",
   "author": "Enigma Technologies <contact@enigma.io> (http://enigma.io)",
   "main": "index.js",

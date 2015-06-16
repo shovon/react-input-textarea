@@ -29,14 +29,22 @@ var BaseInput = (function (_React$Component) {
     _classCallCheck(this, BaseInput);
 
     _get(Object.getPrototypeOf(BaseInput.prototype), 'constructor', this).call(this, props);
-    this.state = {
-      value: (0, _helpers.isStringEmpty)(props.initialValue) ? '' : props.initialValue
-    };
+
+    var value = (0, _helpers.isStringEmpty)(props.initialValue) ? '' : props.initialValue;
+
+    this.state = { value: value };
   }
 
   _inherits(BaseInput, _React$Component);
 
   _createClass(BaseInput, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var value = (0, _helpers.isStringEmpty)(nextProps.initialValue) ? '' : nextProps.initialValue;
+
+      this.setState({ value: value });
+    }
+  }, {
     key: '_onFocus',
     value: function _onFocus(event) {
       this._setSelectionIfNeeded(event.target);

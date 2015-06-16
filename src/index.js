@@ -8,9 +8,17 @@ class BaseInput extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      value: isStringEmpty(props.initialValue) ? '' : props.initialValue
-    }
+
+    const value = isStringEmpty(props.initialValue) ? '' : props.initialValue;
+
+    this.state = { value: value }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const value =
+      isStringEmpty(nextProps.initialValue) ? '' : nextProps.initialValue;
+
+    this.setState({value: value});
   }
 
   _onFocus(event) {
