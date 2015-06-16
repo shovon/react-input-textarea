@@ -30,4 +30,4 @@ var MyComponent = React.createClass({
 
 ## License
 
-`react-input-textarea` is [MIT Licensed](https://github.com/shovon/react-input-textarea/blob/master/LICENSE)
+This is a fork of [`react-input-placeholder`](https://github.com/enigma-io/react-input-placeholder). `react-input-textarea` is [MIT Licensed](https://github.com/shovon/react-input-textarea/blob/master/LICENSE), and all copyrights belong to Enigma Technologies, Inc.
