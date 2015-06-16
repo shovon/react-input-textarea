@@ -1,15 +1,17 @@
 {
-  "name": "react-input-placeholder",
-  "version": "1.1.0",
-  "description": "Input and Textarea React components with polyfilled placeholder support.",
+  "name": "react-input-textarea",
+  "version": "1.0.0",
+  "description": "Have your React input and text area be styled, right down to the placeholder. Have them be styled inlined, without any external CSS.",
   "author": "Enigma Technologies <contact@enigma.io> (http://enigma.io)",
-  "main": "src/react-input-placeholder.js",
+  "main": "index.js",
   "scripts": {
-    "test": "grunt lint"
+    "preview": "webpack-dev-server -d --content-base ./public",
+    "bundle": "babel --stage 0 src/index.js > build/index.js && babel --stage 0 src/helpers.js > build/helpers.js",
+    "test": "mocha --require babelhook"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/enigma-io/react-input-placeholder.git"
+    "url": "git://github.com/shovon/react-input-textarea.git"
   },
   "keywords": [
     "placeholder",
@@ -24,12 +26,21 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/enigma-io/react-input-placeholder/issues"
+    "url": "https://github.com/shovon/react-input-textarea/issues"
   },
   "devDependencies": {
-    "grunt": "^0.4.1",
-    "grunt-contrib-jshint": "^0.7.0",
-    "grunt-contrib-uglify": "^0.2.4",
-    "grunt-browserify": "^1.2.9"
+    "babel": "^5.5.8",
+    "babel-core": "^5.5.8",
+    "babel-loader": "^5.1.4",
+    "mocha": "^2.2.5",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0"
+  },
+  "peerDependencies": {
+    "react": "^0.13.3"
+  },
+  "dependencies": {
+    "object-assign": "^3.0.0"
   }
 }
