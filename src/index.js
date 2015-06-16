@@ -1,6 +1,6 @@
 import React from 'react';
 import assign from 'object-assign';
-import { isStringEmpty } from './helpers';
+import { isStringEmpty, isArray } from './helpers';
 
 class BaseInput extends React.Component {
 
@@ -68,36 +68,11 @@ class BaseInput extends React.Component {
     this._setSelectionIfNeeded(React.findDOMNode(this.refs.textInput));
   }
 
-  render() {
+  _mergeStyles(style1, style2) {
+    let stl1 = isArray(style1) ? style1 : [style1];
+    let stl2 = isArray(style2) ? style2 : [style2];
 
-    const defaultPlaceHolderStyle = Input.DEFAULT_PLACEHOLDER_STYLE;
-
-    const placeholderStyle =
-      this.props.placeholderStyle ?
-        assign(
-          {},
-          defaultPlaceHolderStyle,
-          this.props.placeholderStyle
-        ) : { color: '#a8a8a8' };
-
-    return (
-      <input
-        ref="textInput"
-        type='text'
-        style={
-          !isStringEmpty(this.state.value) ?
-            (this.props.style ? this.props.style : {}) : placeholderStyle
-        }
-        value={
-          isStringEmpty(this.state.value) ?
-            this.props.placeholder : this.state.value
-        }
-        onFocus={this::this._onFocus}
-        onBlur={this::this._onBlur}
-        onChange={this::this._onChange}
-        onSelect={this::this._onSelect} />
-    );
-
+    return stl1.concat(stl2).reduce((prev, next) => assign({}, prev, next));
   }
 
 }
@@ -106,13 +81,15 @@ export class Input extends BaseInput {
   render() {
     const defaultPlaceHolderStyle = Input.DEFAULT_PLACEHOLDER_STYLE;
 
-    const placeholderStyle =
+    const placeholderStyle = this._mergeStyles(
+      (this.props.style ? this.props.style : {}),
       this.props.placeholderStyle ?
         assign(
           {},
           defaultPlaceHolderStyle,
           this.props.placeholderStyle
-        ) : { color: '#a8a8a8' };
+        ) : { color: '#a8a8a8' }
+    );
 
     return (
       <input
@@ -138,13 +115,15 @@ export class TextArea extends BaseInput {
   render() {
     const defaultPlaceHolderStyle = Input.DEFAULT_PLACEHOLDER_STYLE;
 
-    const placeholderStyle =
+    const placeholderStyle = this._mergeStyles(
+      (this.props.style ? this.props.style : {}),
       this.props.placeholderStyle ?
         assign(
           {},
           defaultPlaceHolderStyle,
           this.props.placeholderStyle
-        ) : { color: '#a8a8a8' };
+        ) : { color: '#a8a8a8' }
+    );
 
     return (
       <textarea

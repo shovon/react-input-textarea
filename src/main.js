@@ -3,8 +3,11 @@ import { Input, TextArea } from './';
 
 React.render(
   <div>
-    <Input placeholder="Something" />
-    <TextArea placeholder="Another" />
+    <Input
+      style={{border: '1px solid red', outline: 'none'}}
+      placeholder="Something" />
+    <TextArea
+      placeholder="Another" />
   </div>,
   document.getElementById('playground')
 );
