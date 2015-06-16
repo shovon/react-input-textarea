@@ -104,22 +104,14 @@ var BaseInput = (function (_React$Component) {
       this._setSelectionIfNeeded(_react2['default'].findDOMNode(this.refs.textInput));
     }
   }, {
-    key: 'render',
-    value: function render() {
+    key: '_mergeStyles',
+    value: function _mergeStyles(style1, style2) {
+      var stl1 = (0, _helpers.isArray)(style1) ? style1 : [style1];
+      var stl2 = (0, _helpers.isArray)(style2) ? style2 : [style2];
 
-      var defaultPlaceHolderStyle = Input.DEFAULT_PLACEHOLDER_STYLE;
-
-      var placeholderStyle = this.props.placeholderStyle ? (0, _objectAssign2['default'])({}, defaultPlaceHolderStyle, this.props.placeholderStyle) : { color: '#a8a8a8' };
-
-      return _react2['default'].createElement('input', {
-        ref: 'textInput',
-        type: 'text',
-        style: !(0, _helpers.isStringEmpty)(this.state.value) ? this.props.style ? this.props.style : {} : placeholderStyle,
-        value: (0, _helpers.isStringEmpty)(this.state.value) ? this.props.placeholder : this.state.value,
-        onFocus: this._onFocus.bind(this),
-        onBlur: this._onBlur.bind(this),
-        onChange: this._onChange.bind(this),
-        onSelect: this._onSelect.bind(this) });
+      return stl1.concat(stl2).reduce(function (prev, next) {
+        return (0, _objectAssign2['default'])({}, prev, next);
+      });
     }
   }], [{
     key: 'DEFAULT_PLACEHOLDER_STYLE',
@@ -146,7 +138,7 @@ var Input = (function (_BaseInput) {
     value: function render() {
       var defaultPlaceHolderStyle = Input.DEFAULT_PLACEHOLDER_STYLE;
 
-      var placeholderStyle = this.props.placeholderStyle ? (0, _objectAssign2['default'])({}, defaultPlaceHolderStyle, this.props.placeholderStyle) : { color: '#a8a8a8' };
+      var placeholderStyle = this._mergeStyles(this.props.style ? this.props.style : {}, this.props.placeholderStyle ? (0, _objectAssign2['default'])({}, defaultPlaceHolderStyle, this.props.placeholderStyle) : { color: '#a8a8a8' });
 
       return _react2['default'].createElement('input', {
         ref: 'textInput',
@@ -181,7 +173,7 @@ var TextArea = (function (_BaseInput2) {
     value: function render() {
       var defaultPlaceHolderStyle = Input.DEFAULT_PLACEHOLDER_STYLE;
 
-      var placeholderStyle = this.props.placeholderStyle ? (0, _objectAssign2['default'])({}, defaultPlaceHolderStyle, this.props.placeholderStyle) : { color: '#a8a8a8' };
+      var placeholderStyle = this._mergeStyles(this.props.style ? this.props.style : {}, this.props.placeholderStyle ? (0, _objectAssign2['default'])({}, defaultPlaceHolderStyle, this.props.placeholderStyle) : { color: '#a8a8a8' });
 
       return _react2['default'].createElement('textarea', {
         ref: 'textInput',
